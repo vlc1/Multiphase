@@ -3,6 +3,11 @@
 \usepackage[utf8]{inputenc}
 \usepackage{fullpage}
 \usepackage{hyperref}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{stmaryrd}
+
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
 $if(title)$
 \title{$title$}
