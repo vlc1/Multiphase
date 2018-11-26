@@ -116,12 +116,16 @@ $$
 
 Upon using the characteristic function equation, we find
 $$
-\frac{\partial}{\partial t} \left ( \chi_k \rho_k \right ) + \nabla \cdot \left ( \chi_k \rho_k \mathbf{u}_k \right ) = \rho_k \left ( \mathbf{u}_k - \mathbf{w} \right ) \cdot \mathbf{n}_k a.
+\frac{\partial}{\partial t} \left ( \chi_k \rho_k \right ) + \nabla \cdot \left ( \chi_k \rho_k \mathbf{u}_k \right ) = - \rho_k \left ( \mathbf{u}_k - \mathbf{w} \right ) \cdot \mathbf{n}_k a.
 $$
 
 The factor in front of $a$ in the right-hand side is commonly denoted $\dot{m}_k$ since it denotes the mass transferred between the two phases per unit time per unit area of interface. Hence,
 $$
 \frac{\partial}{\partial t} \left ( \chi_k \rho_k \right ) + \nabla \cdot \left ( \chi_k \rho_k \mathbf{u}_k \right ) = \dot{m}_k a
+$$
+where
+$$
+\dot{m}_k = - \rho_k \left ( \mathbf{u}_k - \mathbf{w} \right ) \cdot \mathbf{n}_k.
 $$
 
 ### Interface
@@ -133,13 +137,12 @@ $$
 
 At the interface, we define the velocity jump
 $$
-\left \llbracket u \right \rrbracket = - \sum_k \mathbf{u}_k \cdot \mathbf{n}_k = - \sum_k \frac{\dot{m}_k}{\rho_k}.
+\left \llbracket u \right \rrbracket = - \sum_k \mathbf{u}_k \cdot \mathbf{n}_k = \sum_k \frac{\dot{m}_k}{\rho_k}.
 $$
 
 By realizing that
 $$
-\left \llbracket u \right \rrbracket = \dot{m}_1 \left ( \frac{1}{\rho_2} - \frac{1}{\rho_1} \right )
-= \dot{m}_2 \left ( \frac{1}{\rho_1} - \frac{1}{\rho_2} \right ),
+\left \llbracket u \right \rrbracket = \dot{m}_1 \left ( \frac{1}{\rho_1} - \frac{1}{\rho_2} \right ) = \dot{m}_2 \left ( \frac{1}{\rho_2} - \frac{1}{\rho_1} \right ),
 $$
 we therefore note that the velocity is continuous
 
@@ -158,4 +161,25 @@ $$
 $$
 
 ## Momentum conservation
+
+Useful identity
+$$
+\left ( \mathbf{u} \cdot \nabla \right ) \mathbf{u} = \nabla \frac{\left \Vert \mathbf{u} \right \Vert ^ 2}{2} + \boldsymbol{\omega} \times \mathbf{u}
+$$
+where
+$$
+\boldsymbol{\omega} = \operatorname{curl} \mathbf{u}.
+$$
+
+### Bulk
+
+On $\Omega_k$,
+$$
+\frac{\partial \rho \mathbf{u}_k}{\partial t} + \nabla \cdot \left ( \rho_k \mathbf{u}_k \otimes \mathbf{u}_k \right ) = \nabla \cdot \boldsymbol{\sigma}_k + \rho_k \mathbf{g}
+$$
+where
+$$
+\boldsymbol{\sigma}_k = - p_k \boldsymbol{\delta} + \boldsymbol{\tau}_k,
+$$
+and $\boldsymbol{\delta}$ is the Kronecker tensor, $p_k$ and $\boldsymbol{\tau}_k$ the pressure and viscous stress tensor in fluid $k$, respectively.
 
