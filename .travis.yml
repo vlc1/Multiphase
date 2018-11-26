@@ -1,4 +1,6 @@
 os: linux
 language: r
+cache: packages
+sudo: false
 script:
         - pandoc -s -N --template=template.latex -t latex -o ROOT.pdf ROOT.md
