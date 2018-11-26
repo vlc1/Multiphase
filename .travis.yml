@@ -3,4 +3,13 @@ language: r
 cache: packages
 sudo: false
 script:
-        - pandoc -s -N --template=template.latex -t latex -o ROOT.pdf ROOT.md
+- pandoc -s -N --template=template.latex -t latex -o ROOT.pdf ROOT.md
+deploy:
+  provider: releases
+  api_key:
+    secure: LmaxdPoU4fS8t/kugKscLn8yhRwVi2mkGNmtDLJ9T8sqh7UVeqsJXoS5g98HeeEeC/S16qnJKrME/JoAMhUWIQJbZX7W1/tdT0pvMRPoMi+gWwHx4ir8OvAYtrjHQ9wbIVIEt8fvcvKiSEzL7hn8EM70VxoKEGlNdO3r6dNQqbKpVdZyhk7kj2XyEMLZVYKdlN1ulirdnbFh6l90po+v9jlOvofai58HG+/xhU9eUgnfcrTX38pxRubAkO5IPUNwPyAn0xWvLLFf/tCgQNB3W+zM0ZlHAchF4oC5TKY3How9haZW2QtTk1x9NUai0q28yMkS24W6M8lPzUP8xX+z6uxW6ECQ5ja0N+FBTD6NXEl1cFoQYrVMw3B8my2B1KOnGggIKRBMW4lVLJGXimOaWB5GUZ1DGbqgZ5OIMyCKbORp95PFyxhyjQrw138PcrixGVtxk2Rk4K94u0XwobTvUt61I7pvxVgwIKQPGIa57afMs2vBkztsHmwG9ebQnJUgzANos06QeNuQzwDdT9vvArxEvF5VTlYUxAGVjiquikAp4ZGvEfpRzPICgvD0KaqCfst+MMNVyiXOnKuuNnMQhrIZnTSqeieXCbeXOceoUkOlQN/Xzut15OgAGcFJBvPx4gVmoLpBP/BLr/xMb0+Vo8LTHn01xT5R330kNQWP3Yg=
+  file: ROOT.pdf
+  skip_cleanup: true
+  overwrite: true
+  on:
+    tags: true
