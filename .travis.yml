@@ -1,0 +1,4 @@
+os: linux
+language: r
+script:
+        - pandoc -s -N --template=template.latex -t latex -o ROOT.pdf ROOT.md
