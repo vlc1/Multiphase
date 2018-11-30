@@ -111,17 +111,17 @@ $$
 
 The following procedure will be repeated multiple times, so it will be detailed once here, and skipped later on
 $$
-\left ( \frac{\partial}{\partial t} \left ( \chi_k \rho_k \right ) + \nabla \cdot \left ( \chi_k \rho_k \mathbf{u}_k \right ) \right ) - \rho_k \left ( \frac{\partial \chi_k}{\partial t} + \mathbf{u}_k \cdot \nabla \chi_k \right ) = 0.
+\left ( \frac{\partial}{\partial t} \left ( \rho_k \chi_k \right ) + \nabla \cdot \left ( \rho_k \mathbf{u}_k \chi_k \right ) \right ) - \rho_k \left ( \frac{\partial \chi_k}{\partial t} + \mathbf{u}_k \cdot \nabla \chi_k \right ) = 0.
 $$
 
 Upon using the characteristic function equation, we find
 $$
-\frac{\partial}{\partial t} \left ( \chi_k \rho_k \right ) + \nabla \cdot \left ( \chi_k \rho_k \mathbf{u}_k \right ) = - \rho_k \left ( \mathbf{u}_k - \mathbf{w} \right ) \cdot \mathbf{n}_k a.
+\frac{\partial}{\partial t} \left ( \rho_k \chi_k \right ) + \nabla \cdot \left ( \rho_k \chi_k \mathbf{u}_k \right ) = - \rho_k \left ( \mathbf{u}_k - \mathbf{w} \right ) \cdot \mathbf{n}_k a.
 $$
 
 The factor in front of $a$ in the right-hand side is commonly denoted $\dot{m}_k$ since it denotes the mass transferred between the two phases per unit time per unit area of interface. Hence,
 $$
-\frac{\partial}{\partial t} \left ( \chi_k \rho_k \right ) + \nabla \cdot \left ( \chi_k \rho_k \mathbf{u}_k \right ) = \dot{m}_k a
+\frac{\partial}{\partial t} \left ( \rho_k \chi_k \right ) + \nabla \cdot \left ( \rho_k \mathbf{u}_k \chi_k \right ) = \dot{m}_k a
 $$
 where
 $$
@@ -157,7 +157,7 @@ $$
 $$
 where
 $$
-\mathbf{u} = \sum_k \chi_k \mathbf{u}_k.
+\mathbf{u} = \sum_k \mathbf{u}_k \chi_k.
 $$
 
 ## Momentum conservation
@@ -175,11 +175,32 @@ $$
 
 On $\Omega_k$,
 $$
-\frac{\partial \rho \mathbf{u}_k}{\partial t} + \nabla \cdot \left ( \rho_k \mathbf{u}_k \otimes \mathbf{u}_k \right ) = \nabla \cdot \boldsymbol{\sigma}_k + \rho_k \mathbf{g}
+\frac{\partial \rho \mathbf{u}_k}{\partial t} + \nabla \cdot \left ( \rho_k \mathbf{u}_k \otimes \mathbf{u}_k \right ) = - \nabla p_k + \nabla \cdot \boldsymbol{\tau}_k + \rho_k \mathbf{g}
+$$
+where $p_k$ is the pressure and $\boldsymbol{\tau}_k$ the viscous stress tensor in fluid $k$.
+
+By the same procedure as detailed in the case of the continuity equation, we find the *whole domain* formation
+$$
+\frac{\partial \rho_k \mathbf{u}_k \chi_k}{\partial t} + \nabla \cdot \left ( \rho_k \mathbf{u}_k \otimes \mathbf{u}_k \chi_k \right ) = - \nabla \left ( p_k \chi_k \right ) + \nabla \cdot \left ( \boldsymbol{\tau}_k \chi_k \right ) + \rho_k \chi_k \mathbf{g} + \left ( \dot{m}_k \mathbf{u}_k - p_k \mathbf{n}_k + \boldsymbol{\tau}_k \cdot \mathbf{n}_k \right ) a.
+$$
+
+### Interface
+
+For massless interfaces in isothermal flows, the Rankine - Hugoniot condition governing momentum transfers read
+$$
+\sum_k \left ( \dot{m}_k \mathbf{u}_k - p_k \mathbf{n}_k + \boldsymbol{\tau}_k \cdot \mathbf{n}_k \right ) = 2 \sigma H \mathbf{n}
+$$
+where $\sigma$ denotes the capillary tension.
+
+## Kinetic energy
+
+On $\Omega_k$,
+$$
+\mathbf{u}_k \cdot \left ( \frac{\partial \rho_k \mathbf{u}_k}{\partial t} + \nabla \cdot \left ( \rho_k \mathbf{u}_k \otimes \mathbf{u}_k \right ) \right ) = \left ( \frac{\partial \rho_k e_k}{\partial t} + \nabla \cdot \left ( \rho_k e_k \mathbf{u}_k \right ) \right ) + e_k \left ( \frac{\partial \rho_k}{\partial t} + \nabla \cdot \left ( \rho_k \mathbf{u}_k \right ) \right )
 $$
 where
 $$
-\boldsymbol{\sigma}_k = - p_k \boldsymbol{\delta} + \boldsymbol{\tau}_k,
+e_k = \frac{\left \Vert \mathbf{u}_k \right \Vert ^ 2}{2}
 $$
-and $\boldsymbol{\delta}$ is the Kronecker tensor, $p_k$ and $\boldsymbol{\tau}_k$ the pressure and viscous stress tensor in fluid $k$, respectively.
+is the kinetic energy per unit mass.
 
